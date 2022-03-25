@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: amq-demo-config
+  labels:
+    app: amq-demo
+data:
+  AMQ_DEMO_PROJECT_NAME: amq-demo-prj-1
+  AMQ_DEMO_BOOSTRAP_SERVER: my-cluster-kafka-bootstrap.amq-demo-prj-1.svc.cluster.local
+  AMQ_DEMO_CLUSTER_1_NAME: my-cluster  
+  AMQ_DEMO_BOOSTRAP_SERVER_WITH_PORT: my-cluster-kafka-bootstrap.amq-demo-prj-1.svc.cluster.local:9092

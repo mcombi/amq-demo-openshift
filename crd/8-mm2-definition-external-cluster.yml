@@ -1,0 +1,40 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaMirrorMaker2
+metadata:
+  name: my-mm2-cluster
+  namespace: amq-demo-prj-2
+spec:
+  mirrors:
+    - checkpointConnector:
+        config:
+          checkpoints.topic.replication.factor: 1
+      heartbeatConnector:
+        config:
+          heartbeats.topic.replication.factor: 1
+      sourceConnector:
+        config:
+          replication.factor: 1
+          offset-syncs.topic.replication.factor: 1
+          sync.topic.acls.enabled: 'false'
+      sourceCluster: my-cluster-source
+      targetCluster: my-cluster-target
+      topicsPattern: .*
+      groupsPattern: .*
+  clusters:
+    - tls:
+        trustedCertificates:
+          - secretName: mm2-source-ca
+            certificate: source_cluster_ca
+      alias: my-cluster-source
+      bootstrapServers: >-
+        my-cluster-kafka-ext-bootstrap-amq-demo-prj-1.apps.cluster-mfv6c.mfv6c.sandbox1168.opentlc.com:443
+    - config:
+        config.storage.replication.factor: -1
+        offset.storage.replication.factor: -1
+        status.storage.replication.factor: -1
+      alias: my-cluster-target
+      bootstrapServers: >-
+        my-cluster-kafka-bootstrap.amq-demo-prj-2.svc.cluster.local:9092
+  version: 3.0.0
+  replicas: 1
+  connectCluster: my-cluster-target
