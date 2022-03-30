@@ -77,3 +77,13 @@ oc annotate dc quarkus-store-project 'app.openshift.io/connects-to'='[{"apiVersi
 
 Define an application to group nodes
 oc label dc orders 'app.kubernetes.io/part-of'='store'
+
+Connections
+
+oc annotate dc quarkus-orders-project 'app.openshift.io/connects-to'='[{"apiVersion":"apps.openshift.io/v1","kind":"DeploymentConfig","name":"postgresql"}]' --overwrite
+
+oc annotate dc quarkus-orders-project 'app.openshift.io/connects-to'='[{"apiVersion":"apps.openshift.io/v1","kind":"StatefulSet","name":"my-cluster-kafka"}]' --overwrite
+
+Define an application to group nodes
+oc label dc orders 'app.kubernetes.io/part-of'='orders'
+oc label dc quarkus-order-project 'app.kubernetes.io/part-of'='orders'
