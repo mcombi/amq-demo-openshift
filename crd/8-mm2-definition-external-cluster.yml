@@ -35,6 +35,17 @@ spec:
       alias: my-cluster-target
       bootstrapServers: >-
         my-cluster-kafka-bootstrap.amq-demo-prj-2.svc.cluster.local:9092
+  template:
+    connectContainer:
+    env:
+      - name: JAEGER_SERVICE_NAME
+          value: my-jaeger-service
+                   - name: JAEGER_AGENT_HOST
+                   value: jaeger-agent-name
+                   - name: JAEGER_AGENT_PORT
+                     value: "6831"
+          tracing:
+            type: jaeger
   version: 3.0.0
   replicas: 1
   connectCluster: my-cluster-target
