@@ -80,10 +80,10 @@ oc label dc orders 'app.kubernetes.io/part-of'='store'
 
 Connections
 
-oc annotate dc quarkus-orders-project 'app.openshift.io/connects-to'='[{"apiVersion":"apps.openshift.io/v1","kind":"DeploymentConfig","name":"postgresql"}]' --overwrite
+oc annotate dc quarkus-store-project 'app.openshift.io/connects-to'='[{"apiVersion":"apps.openshift.io/v1","kind":"DeploymentConfig","name":"orders"}]' --overwrite
 
 oc annotate dc quarkus-orders-project 'app.openshift.io/connects-to'='[{"apiVersion":"apps.openshift.io/v1","kind":"StatefulSet","name":"my-cluster-kafka"}]' --overwrite
 
 Define an application to group nodes
-oc label dc orders 'app.kubernetes.io/part-of'='orders'
-oc label dc quarkus-order-project 'app.kubernetes.io/part-of'='orders'
+oc label dc orders 'app.kubernetes.io/part-of'='orders' (this is the postres database so this command depends on the name you give at the deployment)
+oc label dc quarkus-store-project 'app.kubernetes.io/part-of'='orders'
