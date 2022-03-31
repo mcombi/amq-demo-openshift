@@ -30,6 +30,7 @@ As normal user:
 3. Applichiamo i pod monitor ***oc apply -f 106-strimzi-pod-monitor.yaml***
 4. service account for grafana : oc apply -f 107 107-create-service-account-grafana.yaml
 5. as admin Create RoleBinding so add in the project from the console or ***oc apply -f 108-role-binding-grafana.yaml***
+We have to grab service account token with ***oc serviceaccounts get-token grafana-serviceaccount -n amq-test*** and put in datasource.yaml
 6. ***oc create configmap grafana-config --from-file=datasource.yaml -n amq-test***
 7. ***oc apply -f 109-grafana-app.yaml -n amq-test***
 8. create route for grafana ***oc create route edge MY-GRAFANA-ROUTE --service=grafana --namespace=KAFKA-NAMESPACE***

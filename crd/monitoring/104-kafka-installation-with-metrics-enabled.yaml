@@ -35,6 +35,24 @@ spec:
   entityOperator:
     topicOperator: {}
     userOperator: {}
+  kafkaExporter:
+    groupRegex: ".*" 
+    topicRegex: ".*" 
+    resources: 
+      requests:
+        cpu: 200m
+        memory: 64Mi
+      limits:
+        cpu: 500m
+        memory: 128Mi
+    logging: debug 
+    enableSaramaLogging: true 
+    readinessProbe: 
+      initialDelaySeconds: 15
+      timeoutSeconds: 5
+    livenessProbe: 
+      initialDelaySeconds: 15
+      timeoutSeconds: 5
 ---
 kind: ConfigMap
 apiVersion: v1
