@@ -1,0 +1,18 @@
+apiVersion: 1
+
+datasources:
+  - name: Prometheus - Kafka
+    type: prometheus
+    url: https://thanos-querier.openshift-monitoring.svc.cluster.local:9091
+    access: proxy
+    basicAuth: false
+    withCredentials: true
+    isDefault: true
+    jsonData:
+      timeInterval: 5s
+      tlsSkipVerify: true
+      httpHeaderName1: "Authorization"
+    secureJsonData:
+    #please note you have to replace the token from 
+      httpHeaderValue1: "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImdUSm55WlRpX0ZJNnNacDc3bWhENzVfWW14Nk9pRG1GckItblN0NkVmamMifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJhbXEtdGVzdCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJncmFmYW5hLXNlcnZpY2VhY2NvdW50LXRva2VuLTRycnp6Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6ImdyYWZhbmEtc2VydmljZWFjY291bnQiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiJiOTNlMjJkMi0yYzhlLTQyNDQtOWZjNy1mYzRiNGIwM2UwOTQiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6YW1xLXRlc3Q6Z3JhZmFuYS1zZXJ2aWNlYWNjb3VudCJ9.VZrdDVxUZVjVco358GDjw-naIFgGT803Oi2DSyEECqAb-tQZotxZ7i1wCD7_idrEj9_t0VFzB6HTmQUqUsm460ToFgYUrPM-tPhZoRPSgT2Ec9L0d1VaK7JhHcwcACuDBBJLEtrP0omRqrWhvYpF9YDJdFCVx-wZb_0bMXTAH4R180GMQDVc3WIKLxJX6ovWRJK47RhhJZ2_5isCpSH1ZOC7wIJoTv_DBk0VjM1SfDSkRY2wyylP07xoS4deUU8ldNIyqfo9m1rwFeBoZxquLYZQQkr9lZ2ecRIlTHdv1xRKuKneWNF5jB52NY_bVvp3z0ClkN-LTn7dCFNo9hh5XSnQjW4gtI2ksbxXjBcdGjnZnE7w7dUamdMx_0FMZef3tYPGUB-S-BwGBmLH2V_XlByDYQ3YsUhcftV5jO_2sXJGtTp1_bagGj3Hab4oaPow-s83CuvoNiS_wnrhfHc8yFt6yrCmgU6dQXBwo03sTwSyfLXhQsIQ1pDMhVn1RVOVVnq87XWW90K2vtbBWvWyZLQVBM2XIgTnpyeQX5mjlBPZklZn_obnGqqirYr4Bk4WeY4otFuSQ20HO6fw6MtuLyCT2soGMH416TeSKy9KMK6J-Ruaq0t9vLkJdfgezXgewjZTl7WDLk9snSvsFb5WgsfsOCw0o9rgqWxjcgr_L-0" 
+    editable: true

@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafdrop
+labels:
+    app.openshift.io/runtime=spring-boot
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: kafdrop
+  template:
+    metadata:
+      labels:
+        app: kafdrop
+    spec:
+      containers:
+        - name: kafdrop2
+          image: obsidiandynamics/kafdrop
+          ports:
+            - containerPort: 9000
+              protocol: TCP
+              name: tpc-port
+          env:
+            - name: KAFKA_BROKERCONNECT
+              value: my-cluster-kafka-bootstrap.amq-test.svc.cluster.local:9092
+
+---          
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafdrop-service
+  labels:
+    app: kafdrop
+  annotations:
+    cloud.google.com/load-balancer-type: "Internal"
+spec:
+  ports:
+    - protocol: "TCP"
+      port: 9000
+      name: server
+  selector:
+    app: kafdrop
+  type: LoadBalancer
