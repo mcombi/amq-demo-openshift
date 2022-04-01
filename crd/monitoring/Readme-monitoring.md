@@ -40,12 +40,13 @@ As normal user:
     ***oc expose service kafdrop-service*** -> Improvement include route in the previous step.
 3. Create  pod monitor ***oc apply -f 106-strimzi-pod-monitor.yaml***
 4. service account for grafana : oc apply -f 107 107-create-service-account-grafana.yaml
-5. as admin Create RoleBinding so add in the project from the console or ***oc apply -f 108-role-binding-grafana.yaml***
-We have to grab service account token with ***oc serviceaccounts get-token grafana-serviceaccount -n amq-test*** and put in datasource.yaml
+5. as admin Create RoleBinding in the project from the console or ***oc apply -f 108-role-binding-grafana.yaml -n amq-test***
+5.1. You have to grab service account token with ***oc serviceaccounts get-token grafana-serviceaccount -n amq-test*** and put in datasource.yaml
 6. ***oc create configmap grafana-config --from-file=datasource.yaml -n amq-test***
 7. ***oc apply -f 109-grafana-app.yaml -n amq-test***
 8. create route for grafana ***oc create route edge MY-GRAFANA-ROUTE --service=grafana --namespace=KAFKA-NAMESPACE***
 9. Click on the route and login with admin/admin
+10. Check if datasource is working. If U get and 403 error You have to reset the token (remember to use the format "Bearer token")
+11. Import ***109-kafka-dashboard.json*** from DashBoard, manage
 
 
-To be honest the strimzi guide is pretty clearer https://strimzi.io/docs/operators/in-development/deploying.html#proc-metrics-kafka-deploy-options-str
