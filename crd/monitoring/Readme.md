@@ -1,6 +1,6 @@
-#about Steps to install monitorig for kafka on openshift
+## about Steps to install monitorig for kafka on openshift
 
-Preliminary steps: 
+### Preliminary steps: 
 
 1. Install Red Hat Integration - AMQ Streams Operator
 
@@ -17,8 +17,8 @@ As cluster admin:
 
 1. *** oc apply -f 101-101-cluster-monitoring-config-map.yaml***
 
-    ## Note that we will modify this cm aganin later
-2. ***oc apply -f 102-workload-monitoring-config.yaml*** and add in t
+
+2. ***oc apply -f 102-workload-monitoring-config.yaml*** 
 
 3. Check if everything is ok with ***oc -n openshift-user-workload-monitoring get pod*** or got to openshift-user-workload-monitoring project
     Check the following to be sure that you have enabled correctly monitoring of user-defined projects:
