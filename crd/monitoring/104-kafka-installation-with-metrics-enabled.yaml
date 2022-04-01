@@ -27,7 +27,14 @@ spec:
       log.message.format.version: '3.0'
       inter.broker.protocol.version: '3.0'
     storage:
-      type: ephemeral
+      type: ephemeral 
+    #### enable 
+    metricsConfig:
+      type: jmxPrometheusExporter
+      valueFrom:
+        configMapKeyRef:
+          name: kafka-metrics
+          key: kafka-metrics-config.yml
   zookeeper:
     replicas: 3
     storage:
@@ -35,24 +42,7 @@ spec:
   entityOperator:
     topicOperator: {}
     userOperator: {}
-  kafkaExporter:
-    groupRegex: ".*" 
-    topicRegex: ".*" 
-    resources: 
-      requests:
-        cpu: 200m
-        memory: 64Mi
-      limits:
-        cpu: 500m
-        memory: 128Mi
-    logging: debug 
-    enableSaramaLogging: true 
-    readinessProbe: 
-      initialDelaySeconds: 15
-      timeoutSeconds: 5
-    livenessProbe: 
-      initialDelaySeconds: 15
-      timeoutSeconds: 5
+
 ---
 kind: ConfigMap
 apiVersion: v1

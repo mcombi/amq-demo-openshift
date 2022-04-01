@@ -11,13 +11,15 @@ As cluster admin:
     ## Note that we will modify this cm aganin later
 2. ***oc apply -f 102-workload-monitoring-config.yaml*** and add in t
 
-3. Check if everything is ok with ***oc -n openshift-user-workload-monitoring get pod***
+3. Check if everything is ok with ***oc -n openshift-user-workload-monitoring get pod*** or got to openshift-user-workload-monitoring project
     Check the following to be sure that you have enabled correctly monitoring of user-defined projects:
     If monitoring for user-defined projects is enabled, the openshift-user-workload-monitoring project contains the following components:
 
         A Prometheus Operator
         A Prometheus instance (automatically deployed by the Prometheus Operator)
         A Thanos Ruler instance
+
+
 As normal user:
 
 
@@ -36,3 +38,5 @@ We have to grab service account token with ***oc serviceaccounts get-token grafa
 8. create route for grafana ***oc create route edge MY-GRAFANA-ROUTE --service=grafana --namespace=KAFKA-NAMESPACE***
 9. Click on the route and login with admin/admin
 
+
+To be honest the strimzi guide is pretty clearer https://strimzi.io/docs/operators/in-development/deploying.html#proc-metrics-kafka-deploy-options-str
