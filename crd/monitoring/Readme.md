@@ -15,10 +15,10 @@ Follow this guide https://access.redhat.com/documentation/en-us/red_hat_amq/2020
 Those commands are required cluster wide to enable user definened monitoring projects as described here https://access.redhat.com/documentation/en-us/openshift_container_platform/4.10/html-single/monitoring/index#creating-cluster-monitoring-configmap_configuring-the-monitoring-stack 
 As cluster admin:
 
-1. *** oc apply -f 101-101-cluster-monitoring-config-map.yaml***
+1. ** oc apply -f 101-cluster-monitoring-config-map.yaml**
 
 
-2. ***oc apply -f 102-workload-monitoring-config.yaml*** 
+2. **oc apply -f 102-workload-monitoring-config.yaml**
 
 3. Check if everything is ok with ***oc -n openshift-user-workload-monitoring get pod*** or got to openshift-user-workload-monitoring project
     Check the following to be sure that you have enabled correctly monitoring of user-defined projects:
@@ -32,14 +32,14 @@ As cluster admin:
 As normal user:
 
 
-1. Deploy kakfka instance with metrics enabled :
+1. Deploy kafka instance with metrics enabled :
     *** oc apply -f 104-kafka-installation-with-metrics-enabled.yaml -n amq-test ***
 
 2. Optional but useful, install kafdrop to get through topics
     ***oc apply -f 104-kafdrop-deploy.yaml ***
     ***oc expose service kafdrop-service*** -> Improvement include route in the previous step.
 3. Create  pod monitor ***oc apply -f 106-strimzi-pod-monitor.yaml***
-4. service account for grafana : oc apply -f 107 107-create-service-account-grafana.yaml
+4. service account for grafana : oc apply -f 107-create-service-account-grafana.yaml
 5. as admin Create RoleBinding in the project from the console or ***oc apply -f 108-role-binding-grafana.yaml -n amq-test***
 5.1. You have to grab service account token with ***oc serviceaccounts get-token grafana-serviceaccount -n amq-test*** and put in datasource.yaml
 6. ***oc create configmap grafana-config --from-file=datasource.yaml -n amq-test***
