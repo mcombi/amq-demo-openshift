@@ -32,8 +32,7 @@ As cluster admin:
 As normal user:
 
 
-1. Deploy kakfka instance with metrics enabled :
-    *** oc apply -f 104-kafka-installation-with-metrics-enabled.yaml -n amq-test ***
+1. Deploy kafka instance with metrics enabled : *** oc apply -f 104-kafka-installation-with-metrics-enabled.yaml -n amq-test ***
 
 2. Optional but useful, install kafdrop to get through topics
     ***oc apply -f 104-kafdrop-deploy.yaml ***
