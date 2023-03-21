@@ -6,7 +6,7 @@ datasources:
     url: https://thanos-querier.openshift-monitoring.svc.cluster.local:9091
     access: proxy
     basicAuth: false
-    withCredentials: true
+    withCredentials: false
     isDefault: true
     jsonData:
       timeInterval: 5s
@@ -14,5 +14,5 @@ datasources:
       httpHeaderName1: "Authorization"
     secureJsonData:
     #please note you have to replace the token from 
-      httpHeaderValue1: "Bearer {INSERT HERE WITHOUT BRACES}" 
+      httpHeaderValue1: "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjhET3VVdUU5MDd0VHF5OFA2bHV4R21Ub2VzWVRodGhsT0Ftanh4OWoxWDQifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJhbXEtdGVzdCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJncmFmYW5hLXNlcnZpY2VhY2NvdW50LXRva2VuLTJrbnR4Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6ImdyYWZhbmEtc2VydmljZWFjY291bnQiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiJiMDkyNTU4My02OWIzLTRhZmItYWY2OC1iMGU0MzY4MDE5MWUiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6YW1xLXRlc3Q6Z3JhZmFuYS1zZXJ2aWNlYWNjb3VudCJ9.le6Fx1Qw7f-6uQk6y9HkGP6lAwn9UxwFsxJKQlgR0irvfjRpWL4dZ5uRlmYZvdyXCU84CMc8llToDdTgpOhz5QTXA7c_ED8BSkUftdnE5vMYYOaknPAjBj6QbNtBvDX0MUN2-yYDwkGQMEjfgB69llpgcR4kZ3xqD8n8-Cp4Ra_sGNoQX-0ZrSofvP2GwTsip1Kk1vCVwKha33Q0BB00d-3gEMseS2u0u9zsXyJA90FuPyxrXdLMd808dBFL-x4PBPeiA6LpZuoWdIx-pnxHAcv2uQB7aBr9Fux5_bh6F4-PPiFIpaNyDD4j1mvxOGtTBRCcIbnMG76apkK-GRKGgvw5bvGU6J7eV5wMPM_gLpgufOpzwieXD0aHMT6f5yrF4_NmXTfsdTb8px6nD0I6pnStYE5kRQkmrZzISzDHP9pTn05wKh6MBDLor8s-C31gi3hlFMzDy0CEROKFCcxNhjofKKqR7sOSt8ACe9aRq-SNS0KpoTGLVsLXp5B1ERGcR4MUEsDzflTHocXyegNqZr3KRIc6W87mEmBr1VrbE7ttkVHrk8A-URExZTMiPZF_1QLvFvkT9d3XNDydTqMzdCGWAliOjhoXjBmuip3d_aDykZ3otw96tNUEf-mk4p2QrheYD46rJnxNWq25rCNSpYTp-O_GRQMZyWV6oBox5wY"
     editable: true

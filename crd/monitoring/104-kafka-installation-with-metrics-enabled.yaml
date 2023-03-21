@@ -2,7 +2,7 @@ kind: Kafka
 apiVersion: kafka.strimzi.io/v1beta2
 metadata:
   name: my-cluster
-  namespace: amq-test
+  namespace: store-demo-test
 spec:
   kafka:
     version: 3.0.0
